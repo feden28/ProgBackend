@@ -1,0 +1,408 @@
+const log = (p) => console.log(p)
+import fetch from 'node-fetch'
+
+// function mostrar(param){
+//     return 'a'
+// }
+
+// const mostrar = param => {
+//     return 'a'
+// }
+
+// const mostrar = param => 'a'
+
+// const sumar = (a, b) => a + b
+
+// function sumar(a, b) {
+//     return a+b
+// }
+
+
+// const mostrar = param => console.log(param)
+
+// const mostrar = param => {
+//     return console.log(param)
+// }
+
+// const mostrar = param => {
+//     console.log(param)
+// }
+
+//console log
+//undefined
+
+//Ejemplo de return implicto
+
+// const promediar = (a,b) => (a + b) / 2
+// const p = promediar(4,8)
+// console.log(p)
+
+// const multiplicar = (a,b) => (a * b)
+
+// console.log(multiplicar(3,3))
+
+// log('a')
+
+
+// const ejecutar = unaFuncion => unaFuncion()
+
+// const saludar = () => log('saludos')
+
+//saludar() ==> ejecutar
+
+// ejecutar(saludar)
+
+// ejecutar(()=>log('prueba'))
+// ejecutar(()=>{
+
+//     log('232131')
+//     log('aa')
+//     log('vv')
+// })
+
+// const ejecutar = (unaFuncion, param) => {
+
+//     //Aqui tuvieramos una funcion muy pesada
+//     unaFuncion(param)
+// }
+// const escribirlog = nombre => log(`FECHA DE TERMINO: ${nombre}`)
+
+
+// ejecutar(escribirlog, 'Ana')
+
+
+// EJEMPLO EN VIVO
+// const operacion = ( val1 , val2, ope) => {
+//     return ope(val1, val2)
+// }
+
+// const suma = (x, y) => x / y
+
+// log( operacion(90, 20, suma)  )
+
+
+//PROMESAS
+
+// const dividir = (dividendo, divisor) => new Promise((res, rej)=>{
+//     if(divisor === 0) {
+//         rej('El divisor no puede ser 0')
+//     }else {
+//         res(20)
+//     }
+// })
+
+// dividir(4,2)
+//     .then(res=>log(`resultado: ${res}`))
+//     .catch(err=> log(err))
+
+// dividir(10,0)
+//     .then(res=>log(`resultado: ${res}`))
+//     .catch(err=> log(err))
+
+
+// Promise.reject(30)
+// .then( x => x + 1 )
+// .then( x => 22 )
+// .then( x => {
+//     if(x==22) throw 'Error Coderhouse'
+//     else return 80
+// })
+// .then( x => 30 )
+// .then( x => x / 2 )
+// .then( log )
+// .catch( log )
+
+// asincronismo
+
+
+
+// log('inicio del programa - 119')
+
+// const escribirArchivo = (nombre, cb) => setTimeout(()=>{ cb() }, 2000)
+
+// escribirArchivo('Archivo Coderhouse', () => {
+//     ///AQUI YO SE QUE ACABO DE ESCRIBIR MI ARCHIVO
+//     setTimeout(()=>{ 
+//         //AQUI EJECUTO OTRA OPERACION ASINCRONA
+//         log(`operacion - 127`)
+
+//         setInterval(()=>{ 
+//             //esto es iterativo
+//             log(`iterativo - 131`)
+    
+//         }, 1000)
+
+//     }, 3000)
+
+//     log('Termine de escribir mi archivo - 137')
+    
+// })
+
+// log('fin del programa - 141')
+
+///return
+// const a = (param) => {
+
+//     if(param > 10)
+//     { 
+//         return
+//     }
+
+//     log(`Mi parametro es ${param}`)
+// }
+
+
+// log(a(11))
+
+
+//cb
+
+// const operacion = ( val1 , val2, ope) => ope(val1, val2) + 1
+
+// const suma = (x, y) => {
+//     return x + y
+// }
+
+// log( operacion(90, 20, suma)  )
+
+// function sum(...numbers) {
+//     let total = 0
+//     for(const number of numbers) {
+//         total += number;
+//     }
+//     return total
+// }
+
+// log(sum(1,2,3,4,5,6,7,8,9,10,11,12))
+
+
+// log('inicio del programa - 119')
+
+// const escribirArchivo = (nombre, cb) => setTimeout(()=>{ cb() }, 2000)
+
+// escribirArchivo('Archivo Coderhouse', () => {
+//     ///AQUI YO SE QUE ACABO DE ESCRIBIR MI ARCHIVO
+//     setTimeout(()=>{ 
+//         cb() 
+//     }, 2000)
+//     log('Termine de escribir mi archivo - 137')
+// })
+
+// escribirArchivo('Archivo Coderhouse')
+//     .then()
+//     .then()
+
+// log('fin del programa - 141')
+
+// const prueba = () => Promise( (res, rej) => {
+// res()
+// })
+
+// prueba.then(()=>{
+//     loading.false
+// })
+
+
+//FUNCION CON PROMESAS
+// fetch('https://httpbin.org/post', {method: 'POST', body: 'a=1'})
+//     .then(res=> {
+//         log(res)
+//     })
+//     .then(res=> log(res.data))
+
+
+//     const log = p => console.log(p)
+
+/**DESAFIO GENERICO 1*/
+//0 < 1
+// const generarAleatorio = () => parseInt(Math.random() * 20) + 1
+
+// // log(generarAleatorio())
+
+// // salida => objeto
+
+// let salida = {}
+
+// for(let i=0; i < 10000; i++) {// 9999
+//     //obtengo mi numero aleatorio
+//     let numero = generarAleatorio() //rango del 1 al 20
+//     //verifico si mi objeto ya existe
+//     if(!salida[numero]) {
+//         salida[numero] = 0 // salida[1] = 0
+//     }
+//     //agrego el contador
+//     salida[numero]++; // salida[1] = 1
+// }
+
+// log(salida)
+
+/**DESAFIO GENERICO 2*/
+
+// const productos = [
+//     { id:1, nombre:'Escuadra', precio:323.45 },
+//     { id:2, nombre:'Calculadora', precio:234.56 },
+//     { id:3, nombre:'Globo Terráqueo', precio:45.67 },
+//     { id:4, nombre:'Paleta Pintura', precio:456.78 },
+//     { id:5, nombre:'Reloj', precio:67.89 },
+//     { id:6, nombre:'Agenda', precio:78.90 }
+// ]
+
+//A => Escuadra,Calculadora,Globo Terráqueo,Paleta Pintura,Reloj,Agenda
+ const nombres = productos.map(item => item.nombre).join(',')
+
+
+//B   1207.2500000000002
+// let precioTotal = 0
+
+// productos.forEach(item => {
+//     precioTotal += item.precio
+// })
+
+// const precioTotal = productos.reduce((acc, item) => (acc + item.precio), 0)
+
+// // C 201.20833333333337
+// const precioPromedio = precioTotal / productos.length
+
+// const precios = productos.map(item => item.precio)
+// // D
+// const menorPrecio = Math.min(...precios)
+// // E
+// const mayorPrecio = Math.max(...precios)
+
+// const redondeo = valor => Number(valor.toFixed(2))
+
+// let info = {
+//     nombres: nombres,
+//     total: redondeo(precioTotal),
+//     promedio: redondeo(precioPromedio),
+//     minimo: menorPrecio,
+//     maximo: mayorPrecio
+// }
+
+// log(info)
+
+/**DESAFIO GENERICO 3*/
+
+// const moment = require('moment')
+
+// const hoy = moment()
+// log(typeof (hoy.format('DD-MM-YYYY')))
+
+// const nacimiento = moment('24/03/1982', 'DD/MM/YYYY')
+
+// let cantidadDeDias =  hoy.diff(nacimiento, 'days')
+
+// let cantidadDeAnios =  hoy.diff(nacimiento, 'years')
+
+// log(`
+
+// Hoy es ${hoy.format('DD-MM-YYYY')}
+// Naci el ${nacimiento.format('DD-MM-YYYY')}
+// Desde mi nacimiento han pasado ${cantidadDeDias} dias
+// Desde mi nacimiento han pasado ${cantidadDeAnios} anios
+
+// `)
+//CLASE APOYO
+
+// const fs = require('fs')
+
+// class Contenedor {
+
+//     //constructor que recibe el nombre del archivo, productos.txt
+//     constructor(ruta){
+//         this.ruta = ruta
+//     }
+
+//     //TODO: VER que no se repita el producto
+//     //save(Object)
+//     async save(obj){
+//         //obtenemos todos los objetos
+//         const listado = await this.getAll() //[]
+
+//         //SI existe el producto no agregar nada
+//         if(listado.length > 0 && listado.some((el) => el.title === obj.title))
+//         {
+//             //throw new Error(`El producto ya se encuentra en el catalogo`)
+//             console.log("El producto ya se encuentra en el catalogo");
+//             return
+//         }
+
+//         //identificamos el ultimo id y lo incrementamos
+//         let nuevoId //= listado.length + 1
+
+//         //MANEJAR DOS CASOS
+//         //CASO1: NO HAY DATA
+//         if(listado.length == 0){
+//             nuevoId = 1
+//         }
+//         //SI HAY DATA [...] [1] => 0
+//         else {
+//             nuevoId = listado[listado.length - 1].id + 1
+//         }
+
+//         //ASIGNAR EL NUEVO ID A MI OBJETO
+//         const nuevoObjConID = {...obj, id: nuevoId}
+
+//         //INSERTAR MI OBJETO AL LISTADO
+//         listado.push(nuevoObjConID)
+
+//         //lo guardamos usando fs y try catch
+//         try {
+//             await fs.promises.writeFile(this.ruta, JSON.stringify(listado, null ,2))
+//             return nuevoId
+//         } catch (error) {
+//             throw new Error(`Error al guardar un nuevo objeto: ${error}`)
+//         }
+//     }
+
+
+//     //function para obtener objetos usandy await/async
+//     //asumimos que tenemos el txt y que tiene data
+//     async getAll() {
+//         try {
+//             const data = await fs.promises.readFile(this.ruta, 'utf8')
+//             return JSON.parse(data)
+//         } catch (error) {
+//             return []
+//         }
+//     }
+
+//     //function para obtener un objeto por ID
+//     //TODO: Validar que devuelva el null
+//     async getById(id) {
+//         try {
+//             const listado = await this.getAll() //[]
+//             return listado.find(item => item.id === id) ?? null
+//         } catch (error) {
+//             //TODO: VALIDAR DEAD CODE 
+//             throw new Error(`No se encontro el dato: ${error}`)
+//         }
+//     }
+
+//     async deleteById(id) {
+//         const listado = await this.getAll() //[]
+
+//         //FILTRAMOS EL ID
+//         const nuevoListado = listado.filter( item=> item.id != id)
+
+//         //SOBREESCRIBIMOS LA DATA
+//         try {
+//             await fs.promises.writeFile(this.ruta, JSON.stringify(nuevoListado, null ,2))
+//         } catch (error) {
+//             throw new Error(`No se pudo borrar la data: ${error}`)
+//         }
+//     }
+
+
+//     //function para borrar todo
+//     async deleteAll() {
+//         try {
+//             await fs.promises.writeFile(this.ruta, JSON.stringify([], null ,2))
+//         } catch (error) {
+//             throw new Error(`No se pudo borrar la data: ${error}`)
+//         }
+//     }
+
+// }
+
+// module.exports = Contenedor
