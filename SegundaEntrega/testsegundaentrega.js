@@ -35,6 +35,11 @@ async function main() {
     let id1 = await contenedor.save(item1)
     log(id1)
 
+    //Agrego un elemento al array
+    let id3 = await contenedor.save(item2)
+    log(id3)
+
+
     //Agrego un Elemento Existente
     let id2 = await contenedor.save(item3)
     log(id2)
@@ -48,7 +53,7 @@ async function main() {
     log(datos)
     
     //Elimino todos los objetos del array
-    let vaciar = await contenedor.deleteAll()
+    //let vaciar = await contenedor.deleteAll()
 
 }
 

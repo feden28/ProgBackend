@@ -19,6 +19,7 @@ class Contenedor {
 
         //identificamos el ultimo id y lo incrementamos
         let nuevoId
+        
         if(listar.lenght == 0){ //si el array está vacio, entonces el objeto ocupa el lugar 1.
            nuevoId=1 
         } else { //si el array no está vacio, entonces el objeto ocupa el lugar i+1.
