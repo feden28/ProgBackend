@@ -7,17 +7,18 @@ const products = [
         id:1,
         title: 'Lentes',
         price: 200,
-        thumbnail: 'URL A FOTO'
+        thumbnail: 'https://www.iconfinder.com/icons/2138260/accessory_eyeglasses_fashion_protection_sunglasses_icon',
     },
     {
         id:2,
-        title: 'taza',
+        title: 'Taza',
         price: 150,
-        thumbnail: 'URL A FOTO'
+        thumbnail: 'https://www.iconfinder.com/icons/7911582/mug_dad_fathers%20day_love%20dad_cup_beverage_coffee_icon',
     },
 
 ];
 
+//rouote para todos los productos
 router
 
 .route('/')
@@ -28,7 +29,8 @@ router
             data: products,
         }    
 
-    res.json(response)
+   // res.json(response)
+   res.render('datos.pug', { products })
 })
 
 .post(uploadFileMiddleware.single('thumbnail'), (req, res) => {
@@ -54,14 +56,15 @@ router
     res.status(201).json(response);
 })
 
-
+//route para productos por ID
 router
-.route(':id')
+.route('/:id')
 
 .get((req, res) =>{
     console.log(`Solicitaron el producto de id: ${req.params.id}`)
     const { id } = req.params;
     const product = products.find(product => product.id === Number(id))
+    console.log(product)
     let response;       // = product ? {status: 'ok', data: 'product'} : {status: 'error not found', data: null} - CON TERNARIO
     let statusCode;     // = product ? 200 : 404; CON TERNARIO
     
@@ -79,7 +82,8 @@ router
         statusCode = 404;
     }
 
-    res.status(statusCode).json(response);
+   // res.status(statusCode).json(response);
+    res.render("product", product)
 })
 
 .put((req, res) =>{

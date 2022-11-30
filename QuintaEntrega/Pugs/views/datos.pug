@@ -1,0 +1,16 @@
+extends main.pug
+
+block datos 
+    h2= 'Buscar producto por ID'
+        form(action="" method="get")
+            p='Ingresar el ID del producto'
+            input (type="text" id="id" name="id" placeholder="ID num")
+            input (type="submit" value="Ir")
+        
+        h2= 'Productos'
+            h3 = title
+            p= price
+            
+
+
+
