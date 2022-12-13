@@ -1,52 +1,46 @@
 const socket = io();
+const messageForm = document.getElementById("messageForm");
+const usernameInput = document.getElementById("usernameInput");
+const messageInput = document.getElementById("messageInput");
+const messagesPool = document.getElementById("messagesPool");
 
-const messageForm = document.getElementById('messageForm');
-const productInput = document.getElementById('productInput');
-const priceInput = document.getElementById('priceInput');
-const linkInput = document.getElementById('linkInput');
-const articlesPools = document.getElementById('articlesPools');
-
-//sendMessage se ejecuta cuando se hace click en Submit del Form.
+// Definimos la funcion que envia mensajes
 const sendMessage = (messageInfo) => {
-
-    socket.emit("client:message", messageInfo);
-
+  // Emitiendo el evento "client:message" para mandar la informacion del mensaje al back a traves de websocket
+  socket.emit("client:message", messageInfo);
 };
 
-//renderMessage renderiza el arreglo.
 const renderMessage = (messagesData) => {
+   
+  const html = messagesData
+  .map((messageInfo) => {
+    return (`<div style="display: flex;"> 
+            <strong style="color: blue">${messageInfo.username}: </strong> 
+            <p style="font-family: italic; color: green;">${messageInfo.message}</p> 
+            </div>
+           `)
+  })
+  .join(" ");
 
-    const html = messagesData
-    .map(messageInfo =>{
-        return(`
-        <div>
-        <strong>${messageInfo.name}</strong>
-        <p>${messageInfo.price}</p>
-        <img src="${messagInfo.thumbnail}"/>
-        
-        </div>
-        `)
-    })
-    .join(" ");
 
-    articlesPools.innerHTML = html;
+  messagesPool.innerHTML = html;
 };
 
-//submitHandler recibe la solicitud y la procesa. prevent Default hace que el listado no se resetee
-
+// Definimos la funcion submit handler, se ejecuta cuando se dispara el evento submit del form, prevent default evita que el formulario reinicie
 const submitHandler = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const messageInfo = {
-        name: productInput.value,
-        price: priceInput.value,
-    };
+  const messageInfo = {
+    username: usernameInput.value,
+    message: messageInput.value,
+  };
 
-    sendMessage(messageInfo);
-    productInput.value = "";
-    priceInput.value = "";    //readonly es para no poder modificar el campo una vez completado
-    linkInput.value = "";
+  // sendMessage envia el mensaje al back pasandole como parametro la informacion del mensaje
+  sendMessage(messageInfo);
 
+  // Vaciamos el message
+  messageInput.value = "";
+  //usernameInput.readOnly = true; // esto es para que el usuario quede "bloqueado" despues de mandar el primer mensaje.
 };
 
 messageForm.addEventListener("submit", submitHandler);

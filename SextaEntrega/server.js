@@ -17,7 +17,7 @@ const expressServer = app.listen(PORT, () => {
 });
 
 const io = new IOServer(expressServer);
-const products = [];
+const mensajes = [];
 
 app.use(express.static(__dirname + "/public"));
 app.use('/images', express.static(path.join(__dirname + '/uploads')));
@@ -27,13 +27,13 @@ app.use('/images', express.static(path.join(__dirname + '/uploads')));
 io.on("connection", (socket) => {
     console.log(`New conection, socket ID: ${socket.id}`);
 
-    socket.emit("server:message", products); //actualiza la lista cuando un cliente se conecta
+    socket.emit("server:message", mensajes); //actualiza la lista cuando un cliente se conecta
 
     socket.on("client:message", (messageInfo) => {
+       
+        mensajes.push(messageInfo); //agrega el nuevo mensaje registrado
 
-        products.push(messageInfo); //agrega el nuevo mensaje registrado
-
-        io.emit("server:message", products); // muestra los mensajes actualizados
+        io.emit("server:message", mensajes); // muestra los mensajes actualizados
 
     });
 });
@@ -50,8 +50,8 @@ app.engine("hbs", engine({
 app.set("view engine", "hbs");
 app.set("views", join(__dirname, "/views"));
 
-//app.use("/products", productRouter);
-//app.use("/", baseRouter);
+app.use("/products", productRouter);
+app.use("/", baseRouter);
 
 
 // app.listen(PORT, (error)=>{
