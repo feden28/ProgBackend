@@ -1,0 +1,11 @@
+{{>nav}}
+
+<h3>Productos</h3>
+
+{{#if hasAny}}
+    {{#each products}}
+        <h5>{{this.title}}</h5>
+        <img src="{{this.thumbnail}}" alt="">
+        <p>$ {{this.price}}</p>
+    {{/each}}
+{{/if}}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product's Form</title>
+</head>
+<body>
+    <h3>Cargar Productos</h3>
+
+    
+
+    <form id="messageForm" action="/products" enctype="multipart/form-data" method="post">
+        <input id="productInput" type="text" name="title" placeholder="Producto">
+        <input id="priceInput" type="number" name="price" placeholder="Precio">
+        <input id="linkInput" type="file" name="thumbnail" placeholder="Imagen">
+        <input type="submit">
+
+    </form>
+
+    <div id="articlesPools"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./client.socket.js"></script>
+</body>
+</html>
