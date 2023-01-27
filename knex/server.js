@@ -7,6 +7,9 @@ import path from "path";
 import { engine } from 'express-handlebars';
 import {Server as IOServer } from "socket.io";
 import Contenedor from './api.js';
+import routeFaker from "./routes/routeFaker.js";
+
+
 
 const app = express();
 const PORT = 8083;
@@ -62,6 +65,7 @@ const productApi = new Contenedor(
     },
     "chat"
   );
+
 
   //Escuchamos el evento por default de socket io que se ejecuta cuando conecta un cliente y envia un mensaje
 io.on("connection", (socket) => {
